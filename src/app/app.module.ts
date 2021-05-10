@@ -3,23 +3,21 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
-import { HelloComponent } from "./hello.component";
-
-import { FitmentModule } from "../fitment/fitment.module";
-
-import { StoreModule, MetaReducer } from "@ngrx/store";
-import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { TireFitmentComponent } from './tire-fitment/tire-fitment.component';
+import { FitmentReducer } from './tire-fitment/store/fitment.reducer';
+import { TireModelsComponent } from './tire-models/tire-models.component';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    FitmentModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([])
+    HttpClientModule,
+    StoreModule.forRoot({fitment: FitmentReducer})
   ],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent, TireFitmentComponent, TireModelsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
